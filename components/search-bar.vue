@@ -7,9 +7,10 @@
 
       <div class="search-wrapper">
         <input type="text"
+        @keyup.enter="showItems"
         v-model="searchValue">
         <button type="button"
-        @click="doSearch()">Buscar</button>
+        @click="showItems()">Buscar</button>
       </div>
     </div>
   </div>
@@ -20,26 +21,26 @@ export default {
   name: 'SearchBar',
   data() {
     return {
-      searchValue: 'iPhone'
+      searchValue: ''
     }
   },
   methods: {
-    doSearch() {
-
-
-      this.$router.push({
-        name: 'items',
-        query: {
-          search: this.searchValue
-        }
-      });
-
-      // fetch(url)
-      //   .then( result => result.json() )
-      //   .then( (response) => {
-      //     console.log(response.results)
-      //   });
+    showItems() {
+      if (this.searchValue.length) {
+        this.$router.push({
+          name: 'items',
+          query: {
+            search: this.searchValue
+          }
+        });
+      }
     }
+  },
+  created() {
+    const querySearchValue = this.$router.history.current.query.search;
+    if (this.$router.history.current.query.search) {
+      this.searchValue = querySearchValue;
+    };
   }
 }
 </script>
@@ -79,6 +80,7 @@ export default {
       border: 0 rgba(0,0,0,.2);
       box-sizing: border-box;
       width: 100%;
+      outline: none;
     }
 
     button {
@@ -88,6 +90,7 @@ export default {
       padding: 0 7px;
       background: $grayDarker;
       border: none;
+      outline: none;
     }
   }
 

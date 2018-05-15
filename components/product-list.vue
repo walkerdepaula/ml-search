@@ -1,41 +1,57 @@
 <template>
   <div>
     <ul>
-      <li>
-        <product-item/>
+      <li
+      v-for="item in items"
+      :key="item.id">
+        <product-item
+        :model="item"/>
+      </li>
+
+      <li v-if="!items.length">
+        <div class="alert-info">
+          <p>Nenhum item encontrado.</p>
+        </div>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
-import ProductItem from "~/components/product-item.vue";
+import productItem from "~/components/product-item.vue";
 
 export default {
   name: 'ProductList',
-  components: {
-    ProductItem
+  props: {
+    items: {
+      type: Array,
+      required: true
+    }
   },
-  created() {
-    const searchValue = this.$route.query.search;
-    const url = `https://api.mercadolibre.com/sites/MLA/search?q=:${searchValue}`;
-
-    fetch(url)
-      .then( result => result.json() )
-      .then( (response) => {
-        console.log(response.results)
-      });
+  components: {
+    productItem
   }
 }
 </script>
 
 <style lang="scss" scoped>
+  @import '~assets/scss/variables';
+
   ul {
     list-style: none;
 
     li {
       background: white;
-      padding: 10px 15px;
+      margin-bottom: 2px;
+      cursor: pointer;
     }
+  }
+
+  .alert-info {
+    text-align: center;
+    padding: 10px 15px;
+    color: $disable;
+    box-shadow: 1px 2px 5px rgba(191, 191, 191, 0.65);
+    cursor: default;
   }
 </style>

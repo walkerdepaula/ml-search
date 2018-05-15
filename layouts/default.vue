@@ -28,6 +28,11 @@ export default {
   * {
     margin: 0;
     padding: 0;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  h5, h4, h3, h2, h1 {
+    font-weight: 500;
   }
 
   html, body {

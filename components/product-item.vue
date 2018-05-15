@@ -1,34 +1,78 @@
 <template>
-  <div class="product-item-wrapper">
+  <nuxt-link class="product-item-wrapper"
+  :to="'/items/' + model.id">
     <div class="img-wrapper">
-      <img src="~/assets/images/logo-pt-large-plus.png" alt="">
+      <img
+      :src="model.thumbnail"
+      :alt="model.title">
     </div>
 
     <div class="info-wrapper">
-      <h3 class="title">
-        Preço
-      </h3>
+      <h2 class="price">
+        ${{ model.price }}
+      </h2>
 
-      <p>Texto lado direito</p>
+      <p class="city-name">
+        {{ model.address.city_name }}
+      </p>
 
-      <p class="description">
-        Descrição do produto resumida
+      <p class="title">
+        {{ model.title }}
       </p>
     </div>
-  </div>
+  </nuxt-link>
 </template>
 
 <script>
 export default {
-  name: 'ProductItem'
-
+  name: 'ProductItem',
+  props: {
+    model: {
+      type: Object,
+      required: true
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
+  @import '~assets/scss/variables';
+
   .product-item-wrapper {
+    padding: 10px 15px;
+
     div {
-      display: inline-block;
+      display: table-cell;
+      vertical-align: top;
     }
+    .info-wrapper {
+      padding: 10px 15px;
+      width: 100%;
+    }
+
+    &:hover {
+      .price {
+        margin-left: 15px;
+      }
+    }
+  }
+
+  img {
+    height: 150px;
+  }
+
+  .title {
+    width: 70%;
+  }
+
+  .price {
+    transition: margin 1s;
+    font-weight: 500;
+    margin-bottom: 15px;
+  }
+
+  .city-name {
+    float: right;
+    color: $disable;
   }
 </style>
