@@ -32,10 +32,11 @@ export default {
   }
 
   h5, h4, h3, h2, h1 {
-    font-weight: 500;
+    font-weight: $fontWeightTitles;
   }
 
   html, body {
+    font-size: $fontBase;
     height: 100%;
     background: $grayLight;
   }

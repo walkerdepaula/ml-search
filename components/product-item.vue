@@ -68,7 +68,7 @@ export default {
 
   .price {
     transition: margin 1s;
-    font-weight: 500;
+    font-weight: $fontWeightTitles;
     margin-bottom: 15px;
   }
 

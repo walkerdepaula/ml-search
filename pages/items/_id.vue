@@ -107,7 +107,7 @@ async function asyncData({ params, error }) {
     width: 70%;
 
     .title-description {
-      font-size: 22px;
+      font-size: $fontXxLage;
       margin: 25px 0;
     }
 
@@ -121,7 +121,7 @@ async function asyncData({ params, error }) {
     height: 40px;
     background: $blueInfo;
     color: $white;
-    font-size: 22px;
+    font-size: $fontXxLage;
     font-weight: 200;
     border-radius: 5px;
     border: none;
