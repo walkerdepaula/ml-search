@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul>
-      <li
+      <li class="item"
       v-for="item in items.slice(0, 4)"
       :key="item.id">
         <product-item
@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import productItem from "~/components/product-item.vue";
+import productItem from "./product-item.vue";
 
 export default {
   name: 'ProductList',

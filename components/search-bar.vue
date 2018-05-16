@@ -29,7 +29,7 @@ export default {
   },
   created() {
     const querySearchValue = this.$router.history.current.query.search;
-    if (this.$router.history.current.query.search) {
+    if (querySearchValue) {
       this.searchValue = querySearchValue;
     };
   }
