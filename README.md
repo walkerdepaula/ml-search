@@ -4,22 +4,45 @@
 
 ## Informações
 ```
-  Teste
+  - Disclaimer
+    Optei por utilizar Vuejs, pois não tenho experiência em React.
+    Como nunca tinha feito SSR em nenhum outro projeto, pesquisei e estudei bastante antes de começar a desenvolver e me deparei com o Nuxt.js. O Nuxt.js fornece uma estrutura básica para o desenvolvimento da aplicação, e como a minha aplicação só tem 3 telas e poucos components, decidi segui-la.
+    Não estou utilizando Vuex, pois tenho poucos componentes.
+
+  - Tecnologias utilizadas:
+    - Vuejs
+      - NuxtJs (para lidar com SSR)
+      - VueRouter
+      - Axios
+    - SASS
+    - AVA (para lidar com os testes)
+
+  - Estrutura:
+    - ./assets
+      - Imagens e SCSS utilizado.
+
+    - ./components
+      - Componentes de lógica simples e isolada
+
+    - ./layouts
+      - Estrutura da aplicação, e das páginas de erro. (componente de ponto de entrada)
+
+    - ./pages
+      - Urls da aplicação
+
+    - ./test
+      - Testes realizados nos componentes.
 ```
 
+## Desenvolvimento
 ``` bash
-# install dependencies
-$ npm install # Or yarn install
-
-# serve with hot reload at localhost:3000
+$ npm install
 $ npm run dev
 
-# build for production and launch server
+# Para buildar e rodar um produção
 $ npm run build
 $ npm start
 
-# generate static project
-$ npm run generate
+# Para rodar os testes
+$ npm run test:unit
 ```
-
-For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).
