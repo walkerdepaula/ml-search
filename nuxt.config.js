@@ -11,11 +11,11 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'Mercado Livre Brasil',
+    titleTemplate: '%s - Mercado Livre Brasil',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'front end test' }
+      { hid: 'description', name: 'description', content: 'Mercado livre front end teste' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },

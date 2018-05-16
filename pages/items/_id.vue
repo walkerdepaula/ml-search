@@ -25,34 +25,49 @@ import axios from 'axios'
 
 export default {
   name: 'ProductDetail',
-  validate({ params }) {
-    return params.id != undefined;
-  },
-  async asyncData({ params, error }) {
-    try {
-      const productUrl = `https://api.mercadolibre.com/items/${params.id}`;
-      const productResponse = await axios.get(productUrl);
-
-      const descriptionUrl = `https://api.mercadolibre.com/items/${params.id}/description`
-      const descriptinResponse = await axios.get(descriptionUrl);
-
-      return {
-        ...productResponse.data,
-        description: {
-          ...descriptinResponse.data
-        }
-      }
-
-    } catch (e) {
-      error({ message: 'Item not found', statusCode: 404 });
+  head () {
+    return {
+      title: this.id,
+      meta: [
+        { hid: 'description', name: 'description', content: 'Detalhes do produto' }
+      ]
     }
   },
+  validate,
+  asyncData,
   methods: {
-    itemCondition() {
-      return this.attributes.filter( attribute => attribute.id.toUpperCase() === 'ITEM_CONDITION' )[0]
-    }
+    itemCondition
   }
 }
+
+function validate({ params }) {
+  return params.id != undefined;
+}
+
+function itemCondition() {
+  return this.attributes.filter( attribute => attribute.id.toUpperCase() === 'ITEM_CONDITION' )[0];
+}
+
+async function asyncData({ params, error }) {
+  try {
+    const productUrl = `https://api.mercadolibre.com/items/${params.id}`;
+    const productResponse = await axios.get(productUrl);
+
+    const descriptionUrl = `https://api.mercadolibre.com/items/${params.id}/description`
+    const descriptinResponse = await axios.get(descriptionUrl);
+
+    return {
+      ...productResponse.data,
+      description: {
+        ...descriptinResponse.data
+      }
+    }
+
+  } catch (e) {
+    error({ message: 'Item not found', statusCode: 404 });
+  }
+}
+
 </script>
 
 <style lang="scss" scoped>

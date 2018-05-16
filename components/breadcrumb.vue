@@ -25,14 +25,17 @@ export default {
     }
   },
   methods: {
-    changeBreadcrumb(category) {
-      this.pathFromRoot = category.path_from_root
-    }
+    changeBreadcrumb
   },
   created() {
     this.$root.$on('breadcrumb:change', this.changeBreadcrumb)
   }
 }
+
+function changeBreadcrumb(category) {
+  this.pathFromRoot = category.path_from_root
+}
+
 </script>
 
 <style lang="scss" scoped>

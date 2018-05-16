@@ -25,22 +25,24 @@ export default {
     }
   },
   methods: {
-    showItems() {
-      if (this.searchValue.length) {
-        this.$router.push({
-          name: 'items',
-          query: {
-            search: this.searchValue
-          }
-        });
-      }
-    }
+    showItems
   },
   created() {
     const querySearchValue = this.$router.history.current.query.search;
     if (this.$router.history.current.query.search) {
       this.searchValue = querySearchValue;
     };
+  }
+}
+
+function showItems() {
+  if (this.searchValue.length) {
+    this.$router.push({
+      name: 'items',
+      query: {
+        search: this.searchValue
+      }
+    });
   }
 }
 </script>
