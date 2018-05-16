@@ -1,5 +1,6 @@
 <template>
   <nuxt-link class="product-item-wrapper"
+  tag="div"
   :to="'/items/' + model.id">
     <div class="img-wrapper">
       <img

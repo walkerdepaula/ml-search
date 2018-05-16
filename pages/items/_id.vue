@@ -93,7 +93,7 @@ export default {
 
     .title-description {
       font-size: 22px;
-      margin-bottom: 25px;
+      margin: 25px 0;
     }
 
     span {

@@ -2,7 +2,7 @@
   <div>
     <ul>
       <li
-      v-for="item in items"
+      v-for="item in items.slice(0, 4)"
       :key="item.id">
         <product-item
         :model="item"/>

@@ -1,17 +1,16 @@
 <template>
   <div class="breadcrumb-wrapper">
     <ol class="breadcrumb">
-      <li ng-repeat="breadcrumb in $ctrl.defaultBreadcrumbs">
-        <a href="" ui-sref="home">
+      <li>
+        <nuxt-link
+        :to="'/'">
           Página inicial
-        </a>
+        </nuxt-link>
       </li>
-      <li class="active"
-      ng-repeat="breadcrumb in $ctrl.breadcrumbs"
-      ng-class="{ active: $last }">
-        <span ng-if="breadcrumb.state == null || $last">
-          Borderôs
-        </span>
+      <li class="disable"
+      v-for="path in pathFromRoot"
+      :key="path.id">
+        <span>{{ path.name }}</span>
       </li>
     </ol>
   </div>
@@ -19,11 +18,26 @@
 
 <script>
 export default {
-  name: 'Breadcrumb'
+  name: 'Breadcrumb',
+  data() {
+    return {
+      pathFromRoot: []
+    }
+  },
+  methods: {
+    changeBreadcrumb(category) {
+      this.pathFromRoot = category.path_from_root
+    }
+  },
+  created() {
+    this.$root.$on('breadcrumb:change', this.changeBreadcrumb)
+  }
 }
 </script>
 
 <style lang="scss" scoped>
+  @import '~assets/scss/variables';
+
   .breadcrumb-wrapper {
     margin-bottom: 15px;
   }
@@ -36,8 +50,8 @@ export default {
     }
   }
 
-  .active {
-    color: red;
+  .disable {
+    color: $disable;
   }
 
   li+li:before {

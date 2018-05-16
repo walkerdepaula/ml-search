@@ -1,15 +1,12 @@
 <template>
   <div>
-    <!-- <product-list/> -->
   </div>
 </template>
 
 <script>
-import productList from '~/components/product-list.vue'
-
 export default {
-  components: {
-    productList
+  created() {
+    this.$root.$emit('breadcrumb:change', []);
   }
 }
 </script>

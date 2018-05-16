@@ -17,7 +17,7 @@ export default {
   components: {
     searchBar,
     breadcrumb
-  }
+  },
 }
 </script>
 
